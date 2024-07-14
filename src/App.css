@@ -1,0 +1,57 @@
+/* src/styles.css */
+body.light {
+  background-color: white;
+  color: black;
+}
+
+body.dark {
+  background-color: #121212;
+  color: white;
+}
+
+/* Additional styles for chat list, chat window, etc. */
+/* styles.css or your main CSS file */
+@keyframes ripple {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(100);
+    opacity: 0;
+  }
+}
+
+.ripple {
+  position: fixed;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.3);
+  pointer-events: none;
+  transform: scale(0);
+  animation: ripple 1s linear;
+  z-index: 9999;
+}
+
+/* styles.css or your main CSS file
+@keyframes rotate45 {
+  from {
+    transform: rotate(-45deg);
+  }
+  to {
+    transform: rotate(90deg);
+  }
+}
+
+@keyframes rotateBack {
+  from {
+    transform: rotate(90deg);
+  }
+  to {
+    transform: rotate(-45deg);
+  }
+} */
+.text-size {
+  font-size:9px;
+  line-height: 14px;
+}
