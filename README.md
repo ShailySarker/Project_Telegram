@@ -1,8 +1,4 @@
-# React + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Project Name: Telegram
+Description: This project is basically a replica of Telegram UI. Here, I have completed the initial UI designs of Telegram for small, medium and large size device as responsive behave. By using given api’s, I have shown the chatList and each chat massages with dynamic structure. And also implemented dark-light mode with some basic animation. Mainly, I try to give a visual appearance of the Telegram UI. 
+Technologies: Javascript, ReactJS, Axios, Framer Motion, Tailwind CSS
+Project Live Link: https://project-telegram-ui.netlify.app/
