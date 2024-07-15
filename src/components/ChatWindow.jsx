@@ -12,12 +12,13 @@ import { IoSearchSharp } from 'react-icons/io5';
 import { BsThreeDotsVertical } from 'react-icons/bs';
 
 const ChatWindow = ({ chatId, chartSelection }) => {
+
   const [messages, setMessages] = useState([]);
   useEffect(() => {
     const fetchMessages = async () => {
       const data = await getChatMessages(chatId);
       setMessages(data?.data);
-      console.log("ChatWindow:", data?.data)
+      console.log("ChatWindow:", data)
     };
     fetchMessages();
   }, [chatId]);
@@ -27,59 +28,7 @@ const ChatWindow = ({ chatId, chartSelection }) => {
     chartSelection(null);
   };
 
-  // // last seen
-  // const formatLastSeen = (updatedAt) => {
-  //   const date = new Date(updatedAt);
-  //   const currentDate = new Date();
-
-  //   // Calculate time difference in milliseconds
-  //   const diffTime = currentDate.getTime() - date.getTime();
-  //   const diffSeconds = Math.floor(diffTime / 1000);
-  //   const diffMinutes = Math.floor(diffSeconds / 60);
-  //   const diffHours = Math.floor(diffMinutes / 60);
-  //   const diffDays = Math.floor(diffHours / 24);
-  //   const diffWeeks = Math.floor(diffDays / 7);
-
-  //   // Today
-  //   if (diffDays === diffTime) {
-  //     return `Online`;
-  //   }
-  //   // Yesterday
-  //   else if (diffDays === 1) {
-  //     return `Yesterday at ${date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`;
-  //   }
-  //   // Last week
-  //   else if (diffWeeks == 0 && diffWeeks < 1) {
-  //     return `${date.toLocaleDateString([], { weekday: 'long' })} at ${date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`;
-  //   }
-  //   // Other dates
-  //   else {
-  //     return `${date.toLocaleDateString([], { month: 'short', day: 'numeric' })} at ${date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`;
-  //   }
-  // };
-
-  // const [lastSeen, setLastSeen] = useState('');
-
-  // useEffect(() => {
-  //   // // Assuming you want to display the last seen time of the first non-BeyondChat message
-  //   // const lastSeenTime = messages?.find(message => message.sender.name !== "BeyondChat")?.sender?.updated_at;
-  //   const filteredMessages = messages.filter(message => message.sender_id !== 1);
-
-  //   // Find the latest message timestamp among filtered messages
-  //   let lastMessageDate = null;
-  //   if (filteredMessages.length > 0) {
-  //     // Sort filteredMessages by created_at in descending order to get the latest message first
-  //     filteredMessages.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
-
-  //     // Extract the created_at date from the latest message
-  //     lastMessageDate = filteredMessages[0].created_at;
-  //   }
-  //   if (lastMessageDate) {
-  //     setLastSeen(formatLastSeen(lastMessageDate));
-  //   }
-  // }, [messages]);
-
-  // last seen calculation
+  // last seen find out
   const formatLastSeen = (updatedAt) => {
     const date = new Date(updatedAt);
     const currentDate = new Date();
@@ -256,30 +205,12 @@ const ChatWindow = ({ chatId, chartSelection }) => {
         </div>
         {/* messages */}
         <div className='lg:px-8 md:px-6 px-4 lg:pt-2 lg:h-[560px] md:h-[835px] h-[480px] overflow-y-scroll'>
-          {/* <div>
-            {Object.keys(groupedMessages)?.map(date => (
-              <div key={date}>
-                <div className="sticky top-0 z-10 text-center text-sm font-bold text-white py-2 flex">
-                  <p className='mx-auto dark:bg-violet-500 bg-blue-500 lg:py-2 py-2 px-5 '>{date}</p>
-                </div>
-              </div>
-            ))}
-          </div> */}
           <div>
             {Object.keys(groupedMessages)?.map(date => (
               <div key={date}>
-                {/* Sticky date at the top */}
-                {/* <div className="sticky top-0 z-10 bg-gray-800 text-center text-sm font-bold text-white py-2 ">
-                  <p className='w-44 flex justify-center mx-auto'>{date}</p>
-                </div> */}
                 <div className="sticky top-0 z-10 text-center text-sm font-bold text-white py-2 flex">
                   <p className='mx-auto dark:bg-violet-950 bg-blue-950 lg:py-2 py-2 px-5 rounded-3xl'>{date}</p>
                 </div>
-                {/* Normal date within the message list */}
-                {/* <div className="text-center text-sm font-bold lg:py-5 py-3 text-white">
-                  {date}
-                </div> */}
-
                 {groupedMessages[date]?.map(message => (
                   <div key={message?.id}>
                     {message?.sender?.name === "BeyondChat" ?
