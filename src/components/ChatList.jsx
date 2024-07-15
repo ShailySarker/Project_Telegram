@@ -24,7 +24,7 @@ const ChatList = ({ onSelectChat, selectedChatId }) => {
   }, []);
 
   // message data
- 
+
   const [lastMessages, setLastMessages] = useState([]);
 
   const fetchLastMessages = async (chatId) => {
@@ -121,9 +121,9 @@ const ChatList = ({ onSelectChat, selectedChatId }) => {
   }, [chats]);
 
   return (
-    <div className="chat-list dark:bg-gray-800 bg-white dark:text-white text-black lg:h-[717px] md:h-screen h-[615px] overflow-y-hidden overflow-y-scroll">
+    <div className="chat-list dark:bg-gray-800 bg-white dark:text-white text-black lg:h-screen h-screen overflow-y-hidden overflow-y-scroll">
       {/* menu and search */}
-      <div className='lg:block hidden lg:flex items-center gap-2 sticky top-0 dark:bg-gray-800 bg-white dark:text-white text-black px-5 pt-3 pb-2 '>
+      <div className='lg:block hidden lg:flex items-center gap-2 sticky top-0 dark:bg-gray-800 bg-white dark:text-white text-black px-5 lg:pt-7 pt-3 pb-2 '>
         <div>
           <FaBars className="text-2xl cursor-pointer" onClick={toggleSidebar} />
           <SlidingSidebar isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} />
@@ -133,54 +133,65 @@ const ChatList = ({ onSelectChat, selectedChatId }) => {
           <input className='w-full py-[10px] px-12 rounded-3xl dark:bg-black bg-gray-100 placeholder:font-medium dark:placeholder:text-white placeholder:text-slate-900' type="text" name="" id="" placeholder='Search' />
         </div>
       </div>
+      {/* chat list */}
       <div className='lg:px-4 px-2 lg:pb-6 pb-4'>
-        {chats?.map(chat => {
-          const name = chat?.creator?.name ? chat?.creator?.name : "Deleted Account";
-          const firstLetter = name.charAt(0).toUpperCase();
-          const backgroundColor = chatColors[chat?.id]; // Replace with your chat color logic
-          const lastMessage = lastMessages.find(msg => msg.chatId === chat.id)?.lastMessage;
+        {
+          chats?.length > 0 ?
+            <>
+              {chats?.map(chat => {
+                const name = chat?.creator?.name ? chat?.creator?.name : "Deleted Account";
+                const firstLetter = name.charAt(0).toUpperCase();
+                const backgroundColor = chatColors[chat?.id]; // Replace with your chat color logic
+                const lastMessage = lastMessages.find(msg => msg?.chatId === chat?.id)?.lastMessage;
 
-          return (
-            <div
-              key={chat?.id}
-              className={`flex items-center justify-between py-3 lg:mt-3 px-3 shadow-lg rounded-xl cursor-pointer ${selectedChatId === chat?.id ? 'bg-blue-500 dark:bg-violet-500 text-white shadow-md' : ''}`}
-              onClick={() => onSelectChat(chat?.id)}
-            >
-              <div>
-                {/* Name and avatar */}
-                <div className='flex items-center lg:gap-4 md:gap-5 gap-3'>
-                  <div className='lg:w-10 w-12'>
-                    {name === "Deleted Account" ? (
-                      <FaGhost className='flex items-center justify-center rounded-full lg:w-10 lg:h-10 w-12 h-12 font-bold text-xl bg-gray-400 text-white p-2' />
-                    ) : (
-                      <div
-                        style={{ backgroundColor }}
-                        className='flex items-center justify-center rounded-full lg:w-10 lg:h-10 w-12 h-12 text-white font-bold lg:text-lg md:text-2xl text-xl'
-                      >
-                        {firstLetter}
+                return (
+                  <div
+                    key={chat?.id}
+                    className={`flex items-center justify-between py-3 lg:mt-3 px-3 shadow-lg rounded-xl cursor-pointer ${selectedChatId === chat?.id ? 'bg-blue-500 dark:bg-violet-500 text-white shadow-md' : ''}`}
+                    onClick={() => onSelectChat(chat?.id)}
+                  >
+                    <div>
+                      {/* Name and avatar */}
+                      <div className='flex items-center lg:gap-4 md:gap-5 gap-3'>
+                        <div className='lg:w-10 w-12'>
+                          {name === "Deleted Account" ? (
+                            <FaGhost className='flex items-center justify-center rounded-full lg:w-10 lg:h-10 w-12 h-12 font-bold text-xl bg-gray-400 text-white p-2' />
+                          ) : (
+                            <div
+                              style={{ backgroundColor }}
+                              className='flex items-center justify-center rounded-full lg:w-10 lg:h-10 w-12 h-12 text-white font-bold lg:text-lg md:text-2xl text-xl'
+                            >
+                              {firstLetter}
+                            </div>
+                          )}
+                        </div>
+                        <div>
+                          <h2 className='font-medium lg:text-lg text-base'>{name}</h2>
+                          <div className='flex items-start gap-1'>
+                            <p className='font-medium'>{lastMessage?.sender?.name}: </p>
+                            <p className='lg:block hidden'>{truncateMessage(lastMessage?.message, 18)}</p>
+                            <p className='lg:hidden md:block hidden'>{truncateMessage(lastMessage?.message, 35)}</p>
+                            <p className='md:hidden visible'>{truncateMessage(lastMessage?.message, 10)}</p>
+                          </div>
+                        </div>
                       </div>
-                    )}
-                  </div>
-                  <div>
-                    <h2 className='font-medium lg:text-lg text-base'>{name}</h2>
-                    <div className='flex items-start gap-1'>
-                      <p className='font-medium'>{lastMessage?.sender?.name}: </p>
-                      <p>{truncateMessage(lastMessage?.message, 10)}</p>
+                    </div>
+                    <div>
+                      {/* Last message sender and time */}
+                      <div>
+                        <p>{formatTime(lastMessage?.created_at)}</p>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </div>
-              <div>
-                {/* Last message sender and time */}
-                <div>
-                  <p>{formatTime(lastMessage?.created_at)}</p>
-                </div>
-              </div>
+                );
+              })}
+            </> :
+            <div className='dark:text-white text-black text-center lg:pt-60 md:pt-56 pt-40'>
+              <p className='font-semibold'>No chat info is available now!</p>
             </div>
-          );
-        })}
+        }
         <div className='rounded-full flex justify-end'>
-          <FaPencil className="text-5xl shadow-lg p-[14px] dark:bg-violet-500 bg-blue-500 absolute lg:bottom-7 bottom-4 rounded-2xl text-white " />
+          <FaPencil className="text-5xl shadow-lg p-[14px] dark:bg-violet-500 bg-blue-500 fixed lg:bottom-7 bottom-4 z-20 rounded-2xl text-white " />
         </div>
       </div>
     </div>

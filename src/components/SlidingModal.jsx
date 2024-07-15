@@ -61,7 +61,7 @@ const SlidingSidebar = ({ isOpen, onClose }) => {
                     <div>
                         <div className='flex justify-between items-center'>
                             <div>
-                                <img className='lg:w-20 lg:h-20 w-14 h-14' src={logo} alt="logo" />
+                                <img className='lg:w-[74px] lg:h-[74px] w-14 h-14' src={logo} alt="logo" />
                                 {/* <FaCircleUser className='lg:text-6xl md:text-5xl text-6xl' /> */}
                             </div>
                             <div className=''>
@@ -83,40 +83,40 @@ const SlidingSidebar = ({ isOpen, onClose }) => {
                         {/* <h2 className="text-xl font-bold">Menu</h2> */}
                         <ul>
                             <li className="py-2 flex items-center gap-3">
-                                <span><FaRegCircleUser className='lg:text-2xl text-xl text-slate-700 dark:text-slate-100' /></span>
-                                <span className='font-semibold lg:text-lg text-base'>My Profile</span>
+                                <span><FaRegCircleUser className='text-xl text-slate-700 dark:text-slate-100' /></span>
+                                <span className='font-semibold text-base'>My Profile</span>
                             </li>
                             <li className="py-2 mt-5 flex items-center gap-3">
-                                <span><FiUsers className='lg:text-2xl text-xl text-slate-700 dark:text-slate-100' /></span>
-                                <span className='font-semibold lg:text-lg text-base'>New Group</span>
+                                <span><FiUsers className='text-xl text-slate-700 dark:text-slate-100' /></span>
+                                <span className='font-semibold text-base'>New Group</span>
                             </li>
                             <li className="py-2 flex items-center gap-3">
-                                <span><FiUser className='lg:text-2xl text-xl text-slate-700 dark:text-slate-100' /></span>
-                                <span className='font-semibold lg:text-lg text-base'>Contacts</span>
+                                <span><FiUser className='text-xl text-slate-700 dark:text-slate-100' /></span>
+                                <span className='font-semibold text-base'>Contacts</span>
                             </li>
                             <li className="py-2 flex items-center gap-3">
-                                <span><MdOutlineCall className='lg:text-2xl text-xl text-slate-700 dark:text-slate-100' /></span>
-                                <span className='font-semibold lg:text-lg text-base'>Calls</span>
+                                <span><MdOutlineCall className='text-xl text-slate-700 dark:text-slate-100' /></span>
+                                <span className='font-semibold text-base'>Calls</span>
                             </li>
                             <li className="py-2 flex items-center gap-3">
-                                <span><FaUsersViewfinder className='lg:text-2xl text-xl text-slate-700 dark:text-slate-100' /></span>
-                                <span className='font-semibold lg:text-lg text-base'>People Nearby</span>
+                                <span><FaUsersViewfinder className='text-xl text-slate-700 dark:text-slate-100' /></span>
+                                <span className='font-semibold text-base'>People Nearby</span>
                             </li>
                             <li className="py-2 flex items-center gap-3">
-                                <span><FiBookmark className='lg:text-2xl text-xl text-slate-700 dark:text-slate-100' /></span>
-                                <span className='font-semibold lg:text-lg text-base'>Saved Massages</span>
+                                <span><FiBookmark className='text-xl text-slate-700 dark:text-slate-100' /></span>
+                                <span className='font-semibold text-base'>Saved Massages</span>
                             </li>
                             <li className="py-2 flex items-center gap-3">
-                                <span><IoSettingsOutline className='lg:text-2xl text-xl text-slate-700 dark:text-slate-100' /></span>
-                                <span className='font-semibold lg:text-lg text-base'>Settings</span>
+                                <span><IoSettingsOutline className='text-xl text-slate-700 dark:text-slate-100' /></span>
+                                <span className='font-semibold text-base'>Settings</span>
                             </li>
                             <li className="py-2 mt-5 flex items-center gap-3">
-                                <span><FiUserPlus className='lg:text-2xl text-xl text-slate-700 dark:text-slate-100' /></span>
-                                <span className='font-semibold lg:text-lg text-base'>Invite Friends</span>
+                                <span><FiUserPlus className='text-xl text-slate-700 dark:text-slate-100' /></span>
+                                <span className='font-semibold text-base'>Invite Friends</span>
                             </li>
                             <li className="py-2 flex items-center gap-3">
-                                <span><FaRegQuestionCircle className='lg:text-2xl text-xl text-slate-700 dark:text-slate-100' /></span>
-                                <span className='font-semibold lg:text-lg text-base'>Telegram Features</span>
+                                <span><FaRegQuestionCircle className='text-xl text-slate-700 dark:text-slate-100' /></span>
+                                <span className='font-semibold text-base'>Telegram Features</span>
                             </li>
                         </ul>
                     </div>

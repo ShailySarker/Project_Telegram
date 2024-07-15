@@ -14,7 +14,17 @@ module.exports = {
   darkMode: 'class', // Enable class-based dark mode
   content: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
   theme: {
-    extend: {},
+    extend: {
+      animation: {
+        'spin-slow': 'spin-slow 5s linear infinite',
+      },
+      keyframes: {
+        'spin-slow': {
+          '0%': { transform: 'rotate(-75deg)' },
+          '100%': { transform: 'rotate(0deg)' },
+        },
+      },
+    },
   },
   plugins: [],
 };

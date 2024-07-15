@@ -63,9 +63,15 @@ const ThemeToggle = () => {
     return (
         <button onClick={toggleTheme} className="relative overflow-hidden">
             {isDarkMode ? (
-                <MdNightlight className='lg:text-3xl text-lg -rotate-45 transition-transform duration-500 ease-in-out transform rotate-360' />
+                // <MdNightlight className='lg:text-2xl text-lg -rotate-45 transition-transform duration-500 ease-in-out transform rotate-360' />
+                <div className='icon-container'>
+                    <MdNightlight className='lg:text-2xl text-lg -rotate-45 transform transition-transform duration-500 ease-in-out animate-spin-slow' />
+                </div>
             ) : (
-                <MdLightMode className='lg:text-3xl text-lg transition-transform duration-500 ease-in-out transform rotate-360' />
+                // <MdLightMode className='lg:text-2xl text-lg transition-transform duration-500 ease-in-out transform rotate-360' />
+                <div className='icon-container'>
+                <MdLightMode className='lg:text-2xl text-lg transform transition-transform duration-500 ease-in-out animate-spin-slow' />
+            </div>
             )}
         </button>
     );

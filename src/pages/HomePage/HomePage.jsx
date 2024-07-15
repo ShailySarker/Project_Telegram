@@ -15,26 +15,26 @@ const HomePage = () => {
     setIsDarkMode(darkModePreference);
   }, [isDarkMode]);
   return (
-    <div className="homepage h-screen">
-      <NavBar />
+    <div className="homepage lg:h-auto h-screen">
 
       <div className="lg:flex flex-row lg:block hidden">
         <div className="lg:w-1/3 w-full">
           <ChatList onSelectChat={setSelectedChatId} selectedChatId={selectedChatId} />
         </div>
         <div className="lg:w-2/3 w-full" style={{ backgroundImage: `url(${!isDarkMode ? darkBG : lightBG})` }}>
-        {/* <div className="lg:w-2/3 w-full"> */}
+          {/* <div className="lg:w-2/3 w-full"> */}
           {selectedChatId && <ChatWindow chatId={selectedChatId} />}
         </div>
       </div>
       <div className="lg:hidden visible">
         {selectedChatId ? (
           <div className="lg:w-2/3 w-full relative" style={{ backgroundImage: `url(${!isDarkMode ? darkBG : lightBG})` }}>
-          {/* // <div className="lg:w-2/3 w-full relative"> */}
-            <ChatWindow chatId={selectedChatId} chartSelection={setSelectedChatId}/>
+            {/* // <div className="lg:w-2/3 w-full relative"> */}
+            <ChatWindow chatId={selectedChatId} chartSelection={setSelectedChatId} />
           </div>
         ) : (
           <div className="lg:w-1/3 w-full">
+            <NavBar />
             <ChatList onSelectChat={setSelectedChatId} selectedChatId={selectedChatId} />
           </div>
         )}
