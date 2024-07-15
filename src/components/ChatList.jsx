@@ -168,10 +168,10 @@ const ChatList = ({ onSelectChat, selectedChatId }) => {
                         <div>
                           <h2 className='font-medium lg:text-lg text-base'>{name}</h2>
                           <div className='flex items-start gap-1'>
-                            <p className='font-medium'>{lastMessage?.sender?.name}: </p>
-                            <p className='lg:block hidden'>{truncateMessage(lastMessage?.message, 18)}</p>
-                            <p className='lg:hidden md:block hidden'>{truncateMessage(lastMessage?.message, 35)}</p>
-                            <p className='md:hidden visible'>{truncateMessage(lastMessage?.message, 10)}</p>
+                            <p className='font-medium'>{lastMessage?.sender?.name ? lastMessage?.sender?.name : ""}: </p>
+                            <p className='lg:block hidden'>{ lastMessage?.message ? truncateMessage(lastMessage?.message, 18) : "Loading.."}</p>
+                            <p className='lg:hidden md:block hidden'>{lastMessage?.message ? truncateMessage(lastMessage?.message, 35) : "Loading.."}</p>
+                            <p className='md:hidden visible'>{lastMessage?.message ? truncateMessage(lastMessage?.message, 10) : "Loading.."}</p>
                           </div>
                         </div>
                       </div>
@@ -179,7 +179,7 @@ const ChatList = ({ onSelectChat, selectedChatId }) => {
                     <div>
                       {/* Last message sender and time */}
                       <div>
-                        <p>{formatTime(lastMessage?.created_at)}</p>
+                        <p>{lastMessage?.created_at ? formatTime(lastMessage?.created_at) : ""}</p>
                       </div>
                     </div>
                   </div>
